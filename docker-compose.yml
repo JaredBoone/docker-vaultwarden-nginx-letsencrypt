@@ -42,11 +42,16 @@ services:
     image: vaultwarden/server
     container_name: vaultwarden
     environment:
-      - VIRTUAL_HOST=${VIRTUAL_HOST}
       - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
       - ADMIN_TOKEN=${ADMIN_TOKEN}
       - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
+      - SMTP_HOST=${SMTP_SERVER}
+      - SMTP_FROM=${SMTP_SERVER_USER}
+      - SMTP_PORT=${SMTP_SERVER_PORT}
+      - SMTP_USERNAME=${SMTP_SERVER_USER}
+      - SMTP_PASSWORD=${SMTP_SERVER_PASSWORD}
     volumes:
       - ./data:/data
